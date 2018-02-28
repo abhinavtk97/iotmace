@@ -11,13 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@loadHome')->name('welcome');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/blog', 'MessageController@loadBlog')->name('blog');
+
+
+Route::get('/editor', function (){
+
+    return view('editor');
+})->name('editor');
+
+Route::post('/postnewmessage', 'MessageController@postNewMessage')->name('postnewmessage');
+
 
 Route::prefix('admin')->group(function (){
 

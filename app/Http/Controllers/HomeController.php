@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Message;
+use App\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $id = Auth::user()->id;
+        $name = User::where('id',$id)->first();
+
+
+
+        $messages = Message::where('user_id',$id)->paginate(10);
+
+        return view('home',['id'=>$id, 'user' => $name,'messages' => $messages]);
     }
 }

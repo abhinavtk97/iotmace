@@ -1,95 +1,163 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.master')
 
-        <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
 
-            .full-height {
-                height: 100vh;
-            }
+@section('content')
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
+    <!-- Hero Section-->
+    <section style="background: url(img/hero.jpg); background-size: cover; background-position: center center" class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <h1>Welcome to the Official Website of IOT club MACE</h1><a href="#" class="hero-link">Discover More</a>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+            </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
+        </div>
+    </section>
+    <!-- Intro Section-->
+    <section class="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 class="h3">What we do here ?</h2>
+                    <p class="text-big">We <strong>build</strong> prototypes.. try new methods of establishing a connected world where we can control any device with any device. Make mistakes and learn from them.. find new and easy ways to do our everyday jobs in ways we never imagined. and most of all have fun!!</p>
+                    <br/>
+                    <h2 class="h3">How this will help you ?</h2>
+                    <p class="text-big">This will help you to gain a better understanding of how hardware works.Also help you to under stand how to use hardware to do things and also bring your ideas to real world.</p>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </section>
+    <section class="featured-posts no-padding-top">
+        <div class="container">
+            <h2>Announcements</h2>
+            <hr/>
+
+
+            <?php
+            foreach($mssg as $msg){
+
+
+
+            echo'            <div class="row d-flex align-items-stretch">';
+            if($msg['id']%2==0){
+                echo ' <div class="image col-lg-5"><img src="img/featured-pic-1.jpeg" alt="..."></div>';
+            }
+            echo '<div class="text col-lg-7">
+                    <div class="text-inner d-flex align-items-center">
+                        <div class="content">
+                            <header class="post-header">
+                            <div class="category">
+                             <a href="#">IOT</a><a href="#">MACE</a></div><a href="post.blade.php">';
+            echo '<h2 class="h4">';
+            echo $msg['header'];
+            echo '</h2></a></header>
+                            <p>';
+
+            echo $msg['message'];
+            echo '</p>';
+            echo '                            <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                                    <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
+                                    <div class="title"><span>';
+            ?>{{ $msg->user->name }}
+            <?php
+            echo '</span></div></a>
+                                <div class="date"><i class="icon-clock"></i>'.$msg['created_at'].'</div>
+                            </footer>
+                        </div>
+                    </div>
+                </div>';
+
+            if($msg['id']%2!=0){
+                echo ' <div class="image col-lg-5"><img src="img/featured-pic-1.jpeg" alt="..."></div>';
+            }
+            echo '</div>';
+            }
+            ?>
+
+        </div>
+    </section>
+    <!-- Divider Section-->
+    <section style="background: url(img/divider-bg.jpg); background-size: cover; background-position: center bottom" class="divider">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h2><a href="#" class="hero-link">View More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Latest Posts -->
+    <section class="latest-posts">
+        <div class="container">
+            <header>
+                <h2>Latest from the blog</h2>
+                <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </header>
+            <div class="row">
+                <div class="post col-md-4">
+                    <div class="post-thumbnail"><a href="post.blade.php"><img src="img/blog-1.jpg" alt="..." class="img-fluid"></a></div>
+                    <div class="post-details">
+                        <div class="post-meta d-flex justify-content-between">
+                            <div class="date">20 May | 2016</div>
+                            <div class="category"><a href="#">Business</a></div>
+                        </div><a href="post.blade.php">
+                            <h3 class="h4">Ways to remember your important ideas</h3></a>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    </div>
+                </div>
+                <div class="post col-md-4">
+                    <div class="post-thumbnail"><a href="post.blade.php"><img src="img/blog-2.jpg" alt="..." class="img-fluid"></a></div>
+                    <div class="post-details">
+                        <div class="post-meta d-flex justify-content-between">
+                            <div class="date">20 May | 2016</div>
+                            <div class="category"><a href="#">Technology</a></div>
+                        </div><a href="post.blade.php">
+                            <h3 class="h4">Diversity in Engineering: Effect on Questions</h3></a>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    </div>
+                </div>
+                <div class="post col-md-4">
+                    <div class="post-thumbnail"><a href="post.blade.php"><img src="img/blog-3.jpg" alt="..." class="img-fluid"></a></div>
+                    <div class="post-details">
+                        <div class="post-meta d-flex justify-content-between">
+                            <div class="date">20 May | 2016</div>
+                            <div class="category"><a href="#">Financial</a></div>
+                        </div><a href="post.blade.php">
+                            <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section-->
+    <section class="gallery no-padding">
+        <div class="row">
+            <div class="mix col-lg-3 col-md-3 col-sm-6">
+                <div class="item"><a href="img/gallery-1.jpg" data-fancybox="gallery" class="image"><img src="img/gallery-1.jpg" alt="..." class="img-fluid">
+                        <div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div></a></div>
+            </div>
+            <div class="mix col-lg-3 col-md-3 col-sm-6">
+                <div class="item"><a href="img/gallery-2.jpg" data-fancybox="gallery" class="image"><img src="img/gallery-2.jpg" alt="..." class="img-fluid">
+                        <div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div></a></div>
+            </div>
+            <div class="mix col-lg-3 col-md-3 col-sm-6">
+                <div class="item"><a href="img/gallery-3.jpg" data-fancybox="gallery" class="image"><img src="img/gallery-3.jpg" alt="..." class="img-fluid">
+                        <div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div></a></div>
+            </div>
+            <div class="mix col-lg-3 col-md-3 col-sm-6">
+                <div class="item"><a href="img/gallery-4.jpg" data-fancybox="gallery" class="image"><img src="img/gallery-4.jpg" alt="..." class="img-fluid">
+                        <div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div></a></div>
+            </div>
+        </div>
+    </section>
+
+
+
+@endsection

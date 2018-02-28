@@ -1,11 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 <div class="container">
+    <br/><br/><br/>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Register</div>
+                <div class="card-header">Register here to be a part of IOT MACE</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -125,5 +126,6 @@
             </div>
         </div>
     </div>
+    <br/><br/><br/>
 </div>
 @endsection
