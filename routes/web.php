@@ -19,6 +19,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/blog', 'MessageController@loadBlog')->name('blog');
 
+Route::get('/post/{id?}', 'MessageController@loadPost')->name('post');
+
+
 
 Route::get('/editor', function (){
 

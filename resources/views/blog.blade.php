@@ -17,9 +17,9 @@
                   <div class="post-meta d-flex justify-content-between">
                     <div class="date meta-last">{{ $message->created_at }}</div>
                     <div class="category"><a href="#">Business</a></div>
-                  </div><a href="post.blade.php">
+                  </div><a href="{{ route('post',['id'=>$message->id]) }}">
                     <h3 class="h4">{{ $message->header }}</h3></a>
-                  <p class="text-muted">{{  substr($message->message,0,10) }}<?php echo '...'?></p>
+                  <p class="text-muted">{{  strip_tags(substr($message->message,0,10)) }}<?php echo '...'?></p>
                   <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                       <div class="avatar"><img src="img/avatar-3.jpg" alt="..." class="img-fluid"></div>
                       <div class="title"><span>{{ $message->user->name }}</span></div></a>

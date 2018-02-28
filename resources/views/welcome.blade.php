@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
-                    <h1>Welcome to the Official Website of IOT club MACE</h1><a href="#" class="hero-link">Discover More</a>
+                    <h1>Welcome to the Official Website of IOT Club MACE</h1><a href="{{ route('register') }}" class="hero-link">Become a part of IOT MACE</a>
                 </div>
             </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
         </div>
