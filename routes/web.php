@@ -23,12 +23,16 @@ Route::get('/post/{id?}', 'MessageController@loadPost')->name('post');
 
 
 
-Route::get('/editor', function (){
+Route::get('/newpost', 'UserController@newMessage')->name('newpost');
 
-    return view('editor');
-})->name('editor');
+Route::post('/postnewmessage', 'UserController@postNewMessage')->name('postnewmessage');
 
-Route::post('/postnewmessage', 'MessageController@postNewMessage')->name('postnewmessage');
+Route::post('/edit', 'UserController@postEditMessage')->name('posteditmessage');
+
+Route::get('/edit/{id}', 'UserController@editMessage')->name('editmessage');
+
+Route::get('/delete/{id}','UserController@deleteMessage')->name('deletemessage');
+
 
 
 Route::prefix('admin')->group(function (){

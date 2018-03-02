@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function loadHome(){
 
-        $mssg = Message::limit(2)->get();
+        $mssg = Message::orderBy('id','desc')->limit(6)->get();
 
 
         return view('welcome',['mssg'=> $mssg]);

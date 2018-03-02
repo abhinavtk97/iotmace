@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Matrix Admin</title>
+<title>New Post</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -32,7 +32,7 @@
       @endif
 
       <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-        <h5>Edit Post</h5>
+        <h5>New Post</h5>
       </div>
       <div class="widget-content">
         <label><h6>Heading:</h6>

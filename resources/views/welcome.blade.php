@@ -35,46 +35,41 @@
             <hr/>
 
 
-            <?php
-            foreach($mssg as $msg){
 
+            @foreach($mssg as $msg)
 
-
-            echo'            <div class="row d-flex align-items-stretch">';
-            if($msg['id']%2==0){
-                echo ' <div class="image col-lg-5"><img src="img/featured-pic-1.jpeg" alt="..."></div>';
-            }
-            echo '<div class="text col-lg-7">
+            <div class="row d-flex align-items-stretch">
+            @if($msg['id']%2==0)
+                    <div class="image col-lg-5"><img src="img/featured-pic-1.jpeg" alt="..."></div>
+            @endif
+                <div class="text col-lg-7">
                     <div class="text-inner d-flex align-items-center">
                         <div class="content">
                             <header class="post-header">
                             <div class="category">
-                             <a href="#">IOT</a><a href="#">MACE</a></div><a href="post.blade.php">';
-            echo '<h2 class="h4">';
-            echo $msg['header'];
-            echo '</h2></a></header>
-                            <p>';
-
-            echo $msg['message'];
-            echo '</p>';
-            echo '                            <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                             <a href="#">IOT</a><a href="#">MACE</a></div><a href="post.blade.php">
+                <h2 class="h4">
+            {{ $msg->header }}
+                </h2></a></header>
+                            <p>{{ $msg->message }}</p>
+                                     <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                                     <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                                    <div class="title"><span>';
-            ?>{{ $msg->user->name }}
-            <?php
-            echo '</span></div></a>
-                                <div class="date"><i class="icon-clock"></i>'.$msg['created_at'].'</div>
+                                    <div class="title"><span>
+            {{ $msg->user->name }}
+
+            </span></div></a>
+                                <div class="date"><i class="icon-clock"></i>{{ $msg->created_at }}</div>
                             </footer>
                         </div>
                     </div>
-                </div>';
+                </div>
 
-            if($msg['id']%2!=0){
-                echo ' <div class="image col-lg-5"><img src="img/featured-pic-1.jpeg" alt="..."></div>';
-            }
-            echo '</div>';
-            }
-            ?>
+            @if($msg['id']%2!=0)
+                <div class="image col-lg-5"><img src="img/featured-pic-1.jpeg" alt="..."></div>
+            @endif
+                </div>
+            @endforeach
+
 
         </div>
     </section>
@@ -99,39 +94,20 @@
                 <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             </header>
             <div class="row">
+
+                @foreach($mssg as $msg)
                 <div class="post col-md-4">
                     <div class="post-thumbnail"><a href="post.blade.php"><img src="img/blog-1.jpg" alt="..." class="img-fluid"></a></div>
                     <div class="post-details">
                         <div class="post-meta d-flex justify-content-between">
-                            <div class="date">20 May | 2016</div>
+                            <div class="date">{{ $msg->created_at }}</div>
                             <div class="category"><a href="#">Business</a></div>
                         </div><a href="post.blade.php">
-                            <h3 class="h4">Ways to remember your important ideas</h3></a>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                            <h3 class="h4">{{ $msg->header }}</h3></a>
+                        <p class="text-muted">{{ $msg->message }}</p>
                     </div>
                 </div>
-                <div class="post col-md-4">
-                    <div class="post-thumbnail"><a href="post.blade.php"><img src="img/blog-2.jpg" alt="..." class="img-fluid"></a></div>
-                    <div class="post-details">
-                        <div class="post-meta d-flex justify-content-between">
-                            <div class="date">20 May | 2016</div>
-                            <div class="category"><a href="#">Technology</a></div>
-                        </div><a href="post.blade.php">
-                            <h3 class="h4">Diversity in Engineering: Effect on Questions</h3></a>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    </div>
-                </div>
-                <div class="post col-md-4">
-                    <div class="post-thumbnail"><a href="post.blade.php"><img src="img/blog-3.jpg" alt="..." class="img-fluid"></a></div>
-                    <div class="post-details">
-                        <div class="post-meta d-flex justify-content-between">
-                            <div class="date">20 May | 2016</div>
-                            <div class="category"><a href="#">Financial</a></div>
-                        </div><a href="post.blade.php">
-                            <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

@@ -32,7 +32,7 @@ class HomeController extends Controller
 
 
 
-        $messages = Message::where('user_id',$id)->paginate(10);
+        $messages = Message::where('user_id',$id)->orderBy('id','desc')->paginate(10);
 
         return view('home',['id'=>$id, 'user' => $name,'messages' => $messages]);
     }
