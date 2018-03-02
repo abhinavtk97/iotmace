@@ -30,12 +30,26 @@
 
                         <div class="widget-content nopadding " id="collapseG2">
                             <table class="table table-striped table-bordered">
-                                <tr><th width="80%">Post</th><th>Operations</th></tr>
+                                <tr><th width="70%">Post</th><th width="20%">Tags</th><th>Operations</th></tr>
+
                                 @foreach ($messages as $usr)
                                 <tr><td width="80%">
                                     <div class="article-post"> <a href="{{ route('post',['id'=>$usr->id]) }}" ><span class="user-info"> {{ $usr->header }} </span></a>
                                         <p>{{ $usr->message }}</p>
+
                                     </div>
+                                    </td>
+                                    <td>
+                                        <p>
+
+                                            @foreach($usr->tags as $tag)
+                                                {{ $tag->name }}
+
+                                            @endforeach
+
+                                        </p>
+
+
                                     </td>
                                     <td> <a class="btn btn-success" href="{{ route('editmessage',['id'=>$usr->id]) }}">Edit</a>
                                         <a  data-toggle="modal" data-target="#myModal"  class="btn btn-danger">Delete</a>

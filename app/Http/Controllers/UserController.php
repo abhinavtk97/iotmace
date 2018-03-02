@@ -49,16 +49,27 @@ class UserController extends Controller
 
         $this->validate($request,[
             'header' => 'required',
-            'message' => 'required'
+            'message' => 'required',
+            'tags' => 'required'
         ]);
 
         $id = Auth::user()->id;
+
+
+
 
 
         $message = new Message();
         $message->header = $request['header'];
         $message->message = $request['message'];
         $message->user_id= $id;
+
+        $message->save();
+
+
+        $message->attachTags(explode(',',$request['tags']));
+
+
         $message->save();
 
 
